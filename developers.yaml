@@ -1,0 +1,7 @@
+members:
+  - id: jinhe.lai
+    name: 待填
+    email: 待填
+    modules: [grid, esl-ocr]
+
+# 新同事接入：clone 本仓后加一行（或单独文件 developers/<id>.yaml），journal 按人分文件。

@@ -1,0 +1,24 @@
+repo: shelfmind-knowledge
+version: 0.1
+updated: 2026-09-07
+
+modules:
+  - id: grid
+    title: 棚格检测（grid）
+    owner: jinhe.lai
+    index: spec/grid/index.md
+  - id: esl-ocr
+    title: 电子价签 OCR / VLM
+    owner: jinhe.lai
+    index: spec/esl-ocr/index.md
+
+# 本机路径映射：跨机器不一致时复制为 path_maps.local.yaml 覆盖（不入库）
+path_maps:
+  default:
+    GRID_ROOT: D:\yolo_pengge
+    ESL_OCR_ROOT: C:\Users\jinhe.lai\Documents\ChatGPT\ESL-OCR
+    GRID_SERVER_LJH: /ya/Code/ljh/yolo_grid
+    GRID_SERVER_LIUTING: /ya/Code/liuting/runs
+
+workflows_dir: workflows
+validate: scripts/validate.py

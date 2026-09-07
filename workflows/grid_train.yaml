@@ -1,0 +1,34 @@
+# grid 训练超参/流程白名单（供 shelf validate / 启动前拦截参考）
+task: grid_train
+model: yolov8m
+
+fixed:
+  imgsz: [800]
+  seed: [0]
+  optimizer: [AdamW]
+  checkpoint_rule: best.pt            # 禁用 last.pt 作最终对比
+  disjoint_gate: true                 # 训练前跑 check_train_test_disjoint.py
+  grid3345_protection: 0.01           # 老域回退保护线
+
+# 受控实验区间（box/cls/dfl 首轮 4~6 组）
+allowed:
+  box:   {min: 7.5, max: 9.0}
+  cls:   {min: 0.3, max: 0.8}
+  dfl:   {min: 1.5, max: 2.0}
+  lr0:   {min: 0.0002, max: 0.0015}
+  lrf:   {min: 0.02, max: 0.10}
+  weight_decay: {min: 0.0001, max: 0.001}
+  mosaic:   [0.0, 0.1, 0.2, 0.3]
+  scale:    [0.10, 0.15, 0.20, 0.25]
+  translate: [0.02, 0.04, 0.06]
+
+manifest:
+  epoch_size_rule: max(ceil(n_source / ratio))  # v1(6000) 漏图教训后必须全覆盖
+  audit: true                                    # 行数=epoch_size 且唯一图数=全量训练图
+
+baseline:
+  box: 7.5
+  cls: 0.5
+  dfl: 1.5
+
+notes: 从 winner 配置重训测纯数据收益；评测目录禁止复用；标签变更先清 .cache。

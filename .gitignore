@@ -1,0 +1,9 @@
+runtime/
+tasks/
+__pycache__/
+*.pyc
+path_maps.local.yaml
+*.db
+*.log
+.DS_Store
+Thumbs.db
