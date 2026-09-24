@@ -23,6 +23,10 @@
   mix7 偏保守（FP 少）、mix6_ft 偏激进（FN 少）。
 - **测试集维护**：业务确认的 4 张堆头图已从本地与服务器所有 split/清单移除（归档 `<GRID_SERVER_LJH>/_archive_20260923_duitou2/`），
   6 来源测试集 1126→1122、grid2000 168→166。
+- **标签版本核定（2026-09-24）**：数据集增加版本标记（`data/datasets/README_LABELS_VERSION.md`、目录内 `LABELS_VERSION.md` /
+  `LABELS_VERSION_DEPRECATED.md`）。**最新可用**：沙河 0826/0827 定稿（34180 框，train/val/test 三片都是定稿）、
+  6 来源测试集人工再清洗标签（1122，业务基准）、mix7 训练集（train 8733 / val 1023 / test 1122）。
+  **遗留**：6 来源目前只有 test 分片做过人工再清洗，train/val 仍为历史版本；1356/636 仍为预标注待回收。
 - **当前权重**：
   - 沙河域最优 `<GRID_SERVER_LJH>/runs/mix7_shahe_20260921/runs/v229_mix7_shahe/weights/best.pt`
   - 六来源最优 `<GRID_SERVER_LJH>/runs/mix7_shahe_20260921/runs/mix6_ft_shahe/weights/best.pt`
